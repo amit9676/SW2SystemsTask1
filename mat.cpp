@@ -20,12 +20,18 @@ namespace ariel
         errorThrower(w,h,a,b);
         //std::string result = "";
         std::string carpet (w*h, a);
-        int k = 1;
-        while(h-k-1 >=k && w-k-1>=k){
-            for(int i = k; i < h-k; i++){
-                for(int j = k; j < w-k; j++){
-                    carpet[i*w+j] = k % 2 == 0 ? a : b;
-                }
+        int k = 0;
+        char key = a;
+        while(k <= w-k-1 && k<=h-k-1){
+            key = k % 2 == 0 ? a:b;
+            for(int i = k; i <= w-k-1; i++) {
+                carpet[w*k + i] = key;
+                carpet[w*(h-k-1) + i] = key;
+            }
+
+            for(int i = k; i <= h-k-1; i++) {
+                carpet[w*i + k] = key;
+                carpet[(w*i - k) + (w-1)] = key;
             }
             k++;
         }
