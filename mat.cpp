@@ -3,7 +3,7 @@
 
 namespace ariel
 {
-    void errorThrower(int a, int b){
+    void errorThrower(int a, int b, char c1, char c2){
         //aid - https://stackoverflow.com/questions/8480640/how-to-throw-a-c-exception
         if ((a*b) % 2 == 0){
             throw std::invalid_argument( "height and width must be even number" );
@@ -11,10 +11,13 @@ namespace ariel
         else if(a <= 0 || b<=0){
             throw std::invalid_argument( "height and width must be positive integer");
         }
+        else if(c1 <= 32 || c2 <= 32){
+            throw std::invalid_argument("invalid ascii");
+        }
     }
 
     std::string mat(int w, int h, char a, char b){
-        errorThrower(w,h);
+        errorThrower(w,h,a,b);
         //std::string result = "";
         std::string carpet (w*h, a);
         int k = 1;
