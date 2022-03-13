@@ -5,13 +5,14 @@ namespace ariel
 {
     void errorThrower(int a, int b, char c1, char c2){
         //aid - https://stackoverflow.com/questions/8480640/how-to-throw-a-c-exception
+        const int space = 32;
         if ((a*b) % 2 == 0){
             throw std::invalid_argument( "height and width must be even number" );
         }
-        else if(a <= 0 || b<=0){
+        if(a <= 0 || b<=0){
             throw std::invalid_argument( "height and width must be positive integer");
         }
-        else if(c1 <= 32 || c2 <= 32){
+        if(c1 <= space || c2 <= space){
             throw std::invalid_argument("invalid ascii");
         }
     }
